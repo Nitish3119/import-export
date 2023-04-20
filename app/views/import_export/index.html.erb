@@ -1,0 +1,39 @@
+<!-- app/views/import_export/index.html.erb -->
+
+<h1>All Users</h1>
+
+<h1>Import Users</h1>
+
+<%= form_tag(import_export_import_path, multipart: true) do %>
+  <div class="form-group">
+    <%= label_tag :file, "Select a CSV file to import:" %>
+    <%= file_field_tag :file, accept: ".csv" %>
+  </div>
+
+  <%= submit_tag "Import", class: "btn btn-primary" %>
+<% end %>
+
+
+<%= link_to "Export", import_export_export_path(format: :csv), class: "button" %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Email</th>
+      <th>Phone Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.age %></td>
+        <td><%= user.email %></td>
+        <td><%= user.phone_number %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

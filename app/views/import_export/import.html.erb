@@ -1,0 +1,10 @@
+<h1>Import Users</h1>
+
+<%= form_tag(import_export_import_path, multipart: true) do %>
+  <div class="form-group">
+    <%= label_tag :file, "Select a CSV file to import:" %>
+    <%= file_field_tag :file, accept: ".csv" %>
+  </div>
+
+  <%= submit_tag "Import", class: "btn btn-primary" %>
+<% end %>
